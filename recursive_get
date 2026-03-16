@@ -1,0 +1,9 @@
+class NotFound: ...
+
+
+def get(data: dict, *field_path, default=None):
+    for field in field_path:
+        data = data.get(field, NotFound())
+        if data is NotFound():
+            return default
+    return data
